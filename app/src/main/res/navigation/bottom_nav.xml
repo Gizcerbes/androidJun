@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:app="http://schemas.android.com/apk/res-auto"
-             android:id="@+id/bootm_nav">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bootm_nav"
+    app:startDestination="@id/fragment_home">
+
+
+    <fragment
+        android:id="@+id/fragment_home"
+        android:name="com.uogames.androidjun.HomeFragment"
+        android:label="HomeFragment"
+        tools:layout="@layout/fragment_home"/>
+
+    <fragment
+        android:id="@+id/fragment_person"
+        android:name="com.uogames.androidjun.PersonFragment"
+        android:label="PersonFragment"
+        tools:layout="@layout/fragment_person"
+        />
+
 
 </navigation>
