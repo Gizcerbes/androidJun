@@ -23,12 +23,13 @@ class TwoFragment : Fragment() {
 
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		bind.bottomNavigation.setOnItemSelectedListener {
-			when (it.itemId) {
-				R.id.fragment_home -> bind.bottomNavFragment.findNavController()
-					.navigate(R.id.fragment_home)
-				R.id.fragment_person -> bind.bottomNavFragment.findNavController()
-					.navigate(R.id.fragment_person)
-			}
+			bind.bottomNavFragment.findNavController().navigate(it.itemId)
+//			when (it.itemId) {
+//				R.id.fragment_home -> bind.bottomNavFragment.findNavController()
+//					.navigate(R.id.fragment_home)
+//				R.id.fragment_person -> bind.bottomNavFragment.findNavController()
+//					.navigate(R.id.fragment_person)
+//			}
 			true
 		}
 	}
