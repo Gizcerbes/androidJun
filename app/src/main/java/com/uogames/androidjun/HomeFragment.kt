@@ -1,13 +1,19 @@
 package com.uogames.androidjun
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.uogames.androidjun.databinding.FragmentHomeBinding
+import dagger.android.support.DaggerFragment
+import javax.inject.Inject
 
-class HomeFragment : Fragment() {
+class HomeFragment : DaggerFragment() {
+
+	@Inject
+	lateinit var viewModel: MyViewModel
 
 	private lateinit var bind : FragmentHomeBinding
 
@@ -21,7 +27,11 @@ class HomeFragment : Fragment() {
 	}
 
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+		Log.e("TAG", viewModel.toString())
 
+		bind.button.setOnClickListener {
+			viewModel.showToast("Home fragment")
+		}
 	}
 
 
