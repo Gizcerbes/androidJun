@@ -3,4 +3,7 @@
     <string name="to_fragment_two">to_fragment_two</string>
     <string name="home">Home</string>
     <string name="person">Person</string>
+    <string name="person_name">person name</string>
+    <string name="save">save</string>
+    <string name="person_id">person id</string>
 </resources>

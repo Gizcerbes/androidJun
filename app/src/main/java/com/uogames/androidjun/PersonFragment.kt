@@ -28,12 +28,19 @@ class PersonFragment : DaggerFragment() {
 	}
 
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-		Log.e("TAG", viewModel.toString())
-
 		bind.button.setOnClickListener {
-			viewModel.showToast("Person fragment")
+			viewModel.getPersonById(bind.textField.editText?.text.toString().toDefaultLong(0)) {
+				bind.personText.text = it.toString()
+			}
 		}
+	}
 
+	private fun String.toDefaultLong(long: Long): Long {
+		return try {
+			this.toLong()
+		} catch (e: Exception) {
+			long
+		}
 	}
 
 

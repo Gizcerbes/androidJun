@@ -27,10 +27,9 @@ class HomeFragment : DaggerFragment() {
 	}
 
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-		Log.e("TAG", viewModel.toString())
-
 		bind.button.setOnClickListener {
-			viewModel.showToast("Home fragment")
+			viewModel.saveMyPerson(bind.textField.editText?.text.toString())
+			bind.textField.editText?.setText("")
 		}
 	}
 
