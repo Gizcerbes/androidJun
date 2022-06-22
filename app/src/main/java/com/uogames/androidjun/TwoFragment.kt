@@ -23,7 +23,7 @@ class TwoFragment : Fragment() {
 
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		bind.bottomNavigation.setOnItemSelectedListener {
-			bind.bottomNavFragment.findNavController().navigate(it.itemId)
+			requireActivity().findNavController(R.id.bottom_nav_fragment).navigate(it.itemId)
 			true
 		}
 	}
