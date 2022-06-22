@@ -1,11 +1,9 @@
 package com.uogames.androidjun
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import com.uogames.androidjun.databinding.FragmentPersonBinding
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
@@ -14,7 +12,7 @@ class PersonFragment : DaggerFragment() {
 
 
 	@Inject
-	lateinit var viewModel: MyViewModel
+	lateinit var viewModel: PersonViewModel
 
 	private lateinit var bind: FragmentPersonBinding
 
@@ -28,20 +26,9 @@ class PersonFragment : DaggerFragment() {
 	}
 
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-		bind.button.setOnClickListener {
-			viewModel.getPersonById(bind.textField.editText?.text.toString().toDefaultLong(0)) {
-				bind.personText.text = it.toString()
-			}
-		}
-	}
 
-	private fun String.toDefaultLong(long: Long): Long {
-		return try {
-			this.toLong()
-		} catch (e: Exception) {
-			long
-		}
-	}
 
+
+	}
 
 }

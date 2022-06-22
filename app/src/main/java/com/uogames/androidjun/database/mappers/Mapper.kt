@@ -2,8 +2,8 @@ package com.uogames.androidjun.database.mappers
 
 interface Mapper<T, R> {
 
-	fun toDTO(from: T): R
+	fun T.toDTO(): R
 
-	fun toEntity(from: R): T
+	fun R.toEntity(): T
 
 }

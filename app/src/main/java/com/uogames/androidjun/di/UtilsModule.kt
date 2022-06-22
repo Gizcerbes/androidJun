@@ -2,7 +2,7 @@ package com.uogames.androidjun.di
 
 import android.app.Application
 import android.content.Context
-import com.uogames.androidjun.MyViewModel
+import com.uogames.androidjun.PersonViewModel
 import com.uogames.androidjun.database.DatabaseRepository
 import dagger.Module
 import dagger.Provides
@@ -20,6 +20,6 @@ class UtilsModule {
 
 	@Singleton
 	@Provides
-	fun provideViewModel(repository: DatabaseRepository): MyViewModel = MyViewModel(repository)
+	fun provideViewModel(repository: DatabaseRepository): PersonViewModel = PersonViewModel(repository)
 
 }

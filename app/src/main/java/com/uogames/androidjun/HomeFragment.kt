@@ -5,33 +5,55 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
+import com.uogames.androidjun.database.dto.Person
 import com.uogames.androidjun.databinding.FragmentHomeBinding
 import dagger.android.support.DaggerFragment
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class HomeFragment : DaggerFragment() {
 
-	@Inject
-	lateinit var viewModel: MyViewModel
+    @Inject
+    lateinit var viewModel: PersonViewModel
 
-	private lateinit var bind : FragmentHomeBinding
+    private lateinit var bind: FragmentHomeBinding
 
-	override fun onCreateView(
-		inflater: LayoutInflater,
-		container: ViewGroup?,
-		savedInstanceState: Bundle?
-	): View {
-		bind = FragmentHomeBinding.inflate(inflater, container, false)
-		return bind.root
-	}
+    private val adapter: RecyclerAdapter by lazy { RecyclerAdapter(viewModel) }
 
-	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-		bind.button.setOnClickListener {
-			viewModel.saveMyPerson(bind.textField.editText?.text.toString())
-			bind.textField.editText?.setText("")
-		}
-	}
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        bind = FragmentHomeBinding.inflate(inflater, container, false)
+        return bind.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+        bind.rvRecycler.adapter = adapter
+
+        bind.button.setOnClickListener {
+            val dialogFragment = AddPersonDialog {
+                viewModel.save(Person(0, it)){
+
+                }
+            }
+            dialogFragment.show(requireActivity().supportFragmentManager, AddPersonDialog.TAG)
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        lifecycleScope.launch{
+            viewModel.getAllPersons().first()
+            adapter.notifyDataSetChanged()
+        }
+    }
 
 
 }

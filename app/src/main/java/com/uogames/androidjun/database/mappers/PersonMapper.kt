@@ -4,17 +4,18 @@ import com.uogames.androidjun.database.dto.Person
 import com.uogames.androidjun.database.entity.PersonEntity
 
 object PersonMapper : Mapper<PersonEntity, Person> {
-	override fun toDTO(from: PersonEntity): Person {
+	override fun PersonEntity.toDTO(): Person {
 		return Person(
-			id = from.id,
-			personName = from.personName
+			id = id,
+			personName = personName
 		)
 	}
 
-	override fun toEntity(from: Person): PersonEntity {
+	override fun Person.toEntity(): PersonEntity {
 		return PersonEntity(
-			id = from.id,
-			personName = from.personName
+			id = id,
+			personName = personName
 		)
 	}
+
 }
