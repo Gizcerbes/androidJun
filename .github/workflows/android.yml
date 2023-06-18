@@ -26,7 +26,10 @@ jobs:
     - name: Build with Gradle
       run: ./gradlew build
       
-    - name: Build bundle
+    - name: Build bundle release
+      run: ./gradlew :app:bundleRelease
+      
+    - name: Build bundle debug
       run: ./gradlew :app:bundleDebug
       
     - name: Upload
