@@ -2,9 +2,9 @@ name: Android CI
 
 on:
   push:
-    branches: [ "sequre" ]
+    branches: [ "master" ]
   pull_request:
-    branches: [ "sequre" ]
+    branches: [ "master" ]
 
 jobs:
   build:
