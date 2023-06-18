@@ -26,6 +26,9 @@ jobs:
     - name: Build with Gradle
       run: ./gradlew build
       
+    - name: Build bundle
+      run: ./gradlew :app:bundleDebug
+      
     - name: Upload
       uses: actions/upload-artifact@v3
       with:
